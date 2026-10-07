@@ -1,0 +1,26 @@
+# Local Python caches and environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Generated visual checks and local backups
+/tools/*.png
+*.bak
+.DS_Store
+Thumbs.db
+
+# Unused assets from the original reference-site download
+/9htf9uzhsn4z/
+/_next/
+/lulu/
+/s/
+/turnstile/
+/utag/
+/manifest.json
+/assets/img/
+/assets/js/
+/assets/other/

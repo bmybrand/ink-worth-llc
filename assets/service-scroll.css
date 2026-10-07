@@ -1,0 +1,5 @@
+.service-scroll-track{position:relative}
+.service-scroll-viewport{position:sticky;top:var(--sticky-top);height:calc(100svh - var(--header-height) - 40px);overflow:clip;background:#fff;border-top:1px solid var(--line)}
+.service-scroll-viewport>.service-details{position:relative;width:100%;margin:0;will-change:transform}
+.service-scroll-viewport .service-detail:first-child{border-top:0}
+@media(prefers-reduced-motion:reduce){.service-scroll-viewport{position:static;height:auto;overflow:visible}.service-scroll-viewport>.service-details{transform:none!important}}

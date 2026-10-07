@@ -1,0 +1,57 @@
+{
+  "tool": "Built-in image_gen",
+  "assets": [
+    {
+      "path": "assets/photos/banner-branded.png",
+      "prompt": "Edit the first image, preserving precisely its three-book composition, colors, lighting, cloth textures, perspective, and background. Apply the exact feather and script 'ink' with 'Worth LLC' logo from the second image to the front cover of EACH of the three books. Center each mark in the upper-middle of its visible cover. Turquoise logo foil on the navy book, elegant ivory logo foil on the teal book, dark navy ink logo on the flat ivory book. Keep the full feather silhouette and 'Worth LLC' line accurate and clearly recognizable. The logos must look physically printed on the fabric following the cover perspective, no sticker or rectangle background. Remove the abstract debossed lines only where needed to keep the logo clear. No additional text. Premium real product photo."
+    },
+    {
+      "path": "assets/photos/editorial-craft.png",
+      "prompt": "Create one photorealistic commercial editorial photograph for a premium publishing business website. Landscape 3:2 composition, soft natural studio daylight, sophisticated navy, muted teal, ivory palette, impeccable material detail, authentic restrained styling. No watermarks, no logos, no large readable lettering. Close up still life of a beautiful open stitched book with blank cream pages, a refined dark fountain pen lying diagonally beside it, subtle paper swatches on pale stone desk. An editorial craft mood, side window light, camera at 40 degrees. Fresh pristine materials, no hand."
+    },
+    {
+      "path": "assets/photos/author-desk.png",
+      "prompt": "Create one photorealistic commercial editorial photograph for a premium publishing business website. Landscape 3:2 composition, soft natural studio daylight, sophisticated navy, muted teal, ivory palette, impeccable material detail, authentic restrained styling. No watermarks, no logos, no large readable lettering. Quiet author's desk beside a large sunlit window, open notebook with small indistinct writing, black pen, white ceramic coffee cup, corner of navy bound manuscript. Tasteful modern calm writing space. Horizontal composition from slightly above, no person."
+    },
+    {
+      "path": "assets/photos/expert-workbook.png",
+      "prompt": "Create one photorealistic commercial editorial photograph for a premium publishing business website. Landscape 3:2 composition, soft natural studio daylight, sophisticated navy, muted teal, ivory palette, impeccable material detail, authentic restrained styling. No watermarks, no logos, no large readable lettering. Overhead flat lay of a structured professional workbook with understated abstract charts and tiny nonreadable type, modern silver laptop corner, slim dark pen, teal index tabs, on pale warm desk. Organised business author planning their knowledge."
+    },
+    {
+      "path": "assets/photos/brand-publication.png",
+      "prompt": "One premium photorealistic commercial editorial photograph for a publishing business website, landscape 3:2, natural studio daylight, restrained navy muted teal ivory palette, realistic materials, clean professional styling. No watermark, logos, or large readable lettering. A modern corporate editorial brochure opened on a large pale meeting table, understated geometric blue layouts and tiny unreadable copy, elegant navy presentation folder and two glasses of water. Architectural office background softly out of focus, no people. Focus on branded business print materials."
+    },
+    {
+      "path": "assets/photos/manuscript-editing.png",
+      "prompt": "One premium photorealistic commercial editorial photograph for a publishing business website, landscape 3:2, natural studio daylight, restrained navy muted teal ivory palette, realistic materials, clean professional styling. No watermark, logos, or large readable lettering. Close detail of an editor's hand holding a sharpened graphite pencil over a printed manuscript, subtle red editorial marks on paper, other hand steadying pages, charcoal sleeve, warm pale oak table, teal cloth notebook corner. Crop only hands and manuscript, no face. Authentic publishing editing work."
+    },
+    {
+      "path": "assets/photos/cover-design.png",
+      "prompt": "One premium photorealistic commercial editorial photograph for a publishing business website, landscape 3:2, natural studio daylight, restrained navy muted teal ivory palette, realistic materials, clean professional styling. No watermark, logos, or large readable lettering. Overhead designer workbench with three different editorial cover concepts on thick paper using abstract navy and seafoam geometric graphics, ivory paper samples, a metal ruler, carefully placed color swatches. No book stack, no lettering. Beautiful art direction and precision typography-design studio feeling."
+    },
+    {
+      "path": "assets/photos/publishing-proof.png",
+      "prompt": "One premium photorealistic commercial editorial photograph for a publishing business website, landscape 3:2, natural studio daylight, restrained navy muted teal ivory palette, realistic materials, clean professional styling. No watermark, logos, or large readable lettering. Close view of a pristine cream-page hardcover book opened in a wide shallow V on a dark navy workbench, neatly aligned printed press-proof sheets beside it, teal clothbound spine visible. Gentle raking light reveals page texture and precise binding. Professional publication production quality check, no people."
+    },
+    {
+      "path": "assets/photos/draft-planning.png",
+      "prompt": "Generate one premium photorealistic editorial photograph for a publishing business website. Landscape 3:2, refined navy teal and ivory colors, soft natural daylight, realistic textures, minimal professional styling. No logos, watermark or large readable text. Top-down close photograph of small index cards arranged as a manuscript outline on pale oak, fine pencil lines and small unreadable notes, a navy notebook at corner, elegant clipped paper stack. Ordered but creative, no people, planning a book's chapters."
+    },
+    {
+      "path": "assets/photos/design-direction.png",
+      "prompt": "Generate one premium photorealistic editorial photograph for a publishing business website. Landscape 3:2, refined navy teal and ivory colors, soft natural daylight, realistic textures, minimal professional styling. No logos, watermark or large readable text. Macro still life of a fan of high-quality cream and muted teal paper samples, dark navy binding cloth, professional small metal typography ruler and black pencil, on pale stone. Focus on beautiful tactile materials for book design, no people, no book stack."
+    },
+    {
+      "path": "assets/photos/project-brief.png",
+      "prompt": "Generate one premium photorealistic editorial photograph for a publishing business website. Landscape 3:2, refined navy teal and ivory colors, soft natural daylight, realistic textures, minimal professional styling. No logos, watermark or large readable text. Overhead minimalist desk with a neatly laid-out project brief page containing a few tiny indistinct text lines, dark pen, slim silver reading glasses, blank teal notebook and partial coffee cup. Lots of quiet space, purposeful business planning atmosphere."
+    },
+    {
+      "path": "assets/photos/studio-conversation.png",
+      "prompt": "Generate one premium photorealistic editorial photograph for a publishing business website. Landscape 3:2, refined navy teal and ivory colors, soft natural daylight, realistic textures, minimal professional styling. No logos, watermark or large readable text. Eye level wide editorial photograph of a beautiful small publishing studio meeting space. Pale oak table with open book mockups and navy notebooks, two upholstered ivory chairs, large window and elegant bookshelves softly blurred. No people; a welcoming considered space for collaboration. Not an office full of computer screens."
+    },
+    {
+      "path": "assets/photos/contact-notebook.png",
+      "prompt": "Generate one premium photorealistic editorial photograph for a publishing business website. Landscape 3:2, refined navy teal and ivory colors, soft natural daylight, realistic textures, minimal professional styling. No logos, watermark or large readable text. Close still life of a pristine open cream notebook and an elegant navy pen resting across the middle, ivory envelope and teal paper tab on pale warm desk. Bright welcoming natural light, generous negative space, a visual invitation to start a conversation. No coffee, no laptop, no people."
+    }
+  ]
+}

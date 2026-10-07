@@ -1,0 +1,10 @@
+{
+  "provider": "Unsplash",
+  "usage": "Illustrative stock photography, not Ink Worth staff or client work.",
+  "images": {
+    "writing.jpg": "https://images.unsplash.com/photo-1455390582262-044cdead277a",
+    "books.jpg": "https://images.unsplash.com/photo-1495446815901-a7297e633e8d",
+    "collaboration.jpg": "https://images.unsplash.com/photo-1522071820081-009f0129c71c",
+    "reading.jpg": "https://images.unsplash.com/photo-1516979187457-637abb4f9353"
+  }
+}

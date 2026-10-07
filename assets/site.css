@@ -6,6 +6,8 @@
 @media(max-width:360px){.book-scene{transform:scale(.6);margin-top:-55px;margin-bottom:-75px}.hero-note{font-size:6px;gap:10px}.header-cta{margin-right:14px}}
 :root{--header-height:113px;--sticky-top:calc(var(--header-height) + 20px)}
 html{scroll-padding-top:var(--sticky-top)}
-.site-header{position:sticky;top:0;z-index:100;box-shadow:0 3px 18px #05041508}
+body{padding-top:var(--header-height)}
+.site-header{position:fixed;top:0;left:0;right:0;z-index:1000;background:#fff;box-shadow:0 3px 18px #05041508}
+.skip-link{z-index:1100}
 @media(max-width:760px){:root{--header-height:91px}.header-inner nav{top:100%;max-height:calc(100svh - var(--header-height));overflow-y:auto}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}

@@ -1,4 +1,6 @@
 from pathlib import Path
+import hashlib
+import re
 from page_content import home_extra, services_extra, about_extra, contact_extra, service_notes
 from visual_sections import enhance
 
@@ -43,5 +45,12 @@ for filename, title in nav:
     html = html.replace('</head>', '<link rel="stylesheet" href="assets/details.css"><link rel="stylesheet" href="assets/photography.css"></head>')
     if title == 'Services':
         html = html.replace('</head>', '<link rel="stylesheet" href="assets/service-scroll.css"><script src="assets/service-scroll.js" defer></script></head>')
+    # Asset URLs change with their contents, so older browser caches cannot
+    # retain a previous header or scrolling implementation after a page reload.
+    def version_asset(match):
+        path = match.group(2)
+        version = hashlib.sha256((ROOT/path).read_bytes()).hexdigest()[:12]
+        return f'{match.group(1)}{path}?v={version}{match.group(3)}'
+    html = re.sub(r'((?:href|src)=")(assets/[^"?]+\.(?:css|js))(")', version_asset, html)
     (ROOT/filename).write_text(html, encoding='utf-8')
 print('Built four Ink Worth business pages.')

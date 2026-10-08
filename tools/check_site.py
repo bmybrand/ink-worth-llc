@@ -43,10 +43,16 @@ with sync_playwright() as p:
     page.get_by_label('Your name').fill('Test Client')
     page.get_by_label('Email address').fill('client@example.com')
     page.get_by_label('Tell us about your project').fill('A business book design project.')
-    with page.expect_download() as info:
-        page.get_by_role('button', name='Save project brief').click()
-    assert info.value.suggested_filename == 'ink-worth-project-brief.txt'
-    assert 'has not been sent' in page.locator('#form-status').inner_text()
+    page.get_by_role('button', name='Prepare email enquiry').click()
+    from urllib.parse import urlsplit, parse_qs
+    prepared = urlsplit(page.locator('#prepared-email').get_attribute('href'))
+    assert prepared.scheme == 'mailto' and prepared.path == 'contact@inkworthllc.com'
+    email = parse_qs(prepared.query)
+    assert email['subject'] == ['Project enquiry: Book design']
+    assert 'A business book design project.' in email['body'][0]
+    assert 'client@example.com' in email['body'][0]
+    assert page.locator('#prepared-email').is_visible()
+    assert 'Review and send' in page.locator('#form-status').inner_text()
     page.emulate_media(reduced_motion='reduce')
     page.goto('http://127.0.0.1:4173/index.html')
     assert page.locator('.hero-photograph > img').evaluate('(e) => getComputedStyle(e).animationName') == 'none'
@@ -60,6 +66,6 @@ with sync_playwright() as p:
     assert plain_page.locator('.faq-answer').first.is_visible()
     plain.close()
     assert not errors, errors
-    print('PASS: all four pages at 1440, 390, and 320px; image loading; mobile navigation; service preselection; project brief download; no JavaScript errors.')
+    print('PASS: all four pages at 1440, 390, and 320px; image loading; mobile navigation; service preselection; prepared email recipient and content; no JavaScript errors.')
     print('PASS: FAQs on every page, reduced motion, and content/FAQs without JavaScript.')
     browser.close()

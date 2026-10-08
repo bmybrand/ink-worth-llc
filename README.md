@@ -29,7 +29,7 @@ The services page preserves its original full-width layout inside a scroll-contr
 
 ## Contact form
 
-The form currently downloads a project brief; it does not send messages. Set `enquiryEmail` in `assets/site.js` to a confirmed business address to prepare enquiries in the visitor's email app. There is no email-delivery backend.
+The form opens the visitor's email app with an enquiry addressed to `contact@inkworthllc.com`. The visitor reviews and sends it there; there is no email-delivery backend. The Contact page and shared footer include the email, phone `(321) 332-0682`, and mailing address `PO Box 680585, Orlando, FL 32868`. Shared contact details are maintained in `tools/build_site.py`.
 
 ## Browser checks
 

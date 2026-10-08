@@ -9,9 +9,8 @@ menu.addEventListener('click', () => {
 document.addEventListener('keydown', event => { if (event.key === 'Escape' && menu.getAttribute('aria-expanded') === 'true') { closeMenu(); menu.focus(); } });
 document.addEventListener('click', event => { if (!event.target.closest('.site-header')) closeMenu(); });
 
-// Set this to the confirmed business email to enable email enquiries.
-const enquiryEmail = '';
 const form = document.querySelector('#enquiry-form');
+const enquiryEmail = form?.dataset.recipient || '';
 if (form) {
   const chosen = new URLSearchParams(location.search).get('service');
   if (['writing', 'design', 'publishing'].includes(chosen)) form.elements.service.value = chosen;
@@ -27,8 +26,12 @@ if (form) {
     const brief = `Ink Worth LLC — Project enquiry\n\nName: ${data.get('name')}\nEmail: ${data.get('email')}\nCompany / book: ${data.get('company') || 'Not specified'}\nService: ${service}\n\n${data.get('message')}\n`;
     const status = document.querySelector('#form-status');
     if (enquiryEmail) {
-      location.href = `mailto:${enquiryEmail}?subject=${encodeURIComponent('Project enquiry: ' + service)}&body=${encodeURIComponent(brief)}`;
-      status.textContent = 'Your enquiry is ready in your email app. Please send it there to complete your request.';
+      const emailUrl = `mailto:${enquiryEmail}?subject=${encodeURIComponent('Project enquiry: ' + service)}&body=${encodeURIComponent(brief)}`;
+      const emailLink = document.querySelector('#prepared-email');
+      emailLink.href = emailUrl;
+      emailLink.hidden = false;
+      location.href = emailUrl;
+      status.textContent = `Review and send your enquiry in your email app. If it didn’t open, use the prepared email link or email ${enquiryEmail} directly.`;
     } else {
       const url = URL.createObjectURL(new Blob([brief], {type: 'text/plain;charset=utf-8'}));
       const link = document.createElement('a');

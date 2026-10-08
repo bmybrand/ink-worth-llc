@@ -7,6 +7,11 @@ from visual_sections import enhance
 ROOT = Path(__file__).resolve().parent.parent
 nav = [('index.html', 'Home'), ('services.html', 'Services'), ('about.html', 'About'), ('contact.html', 'Contact')]
 
+BUSINESS_EMAIL = 'contact@inkworthllc.com'
+def contact_details(footer=False):
+    variant = ' contact-details--footer' if footer else ''
+    return f'''<address class="contact-details{variant}"><div><span class="contact-label">Email</span><a href="mailto:{BUSINESS_EMAIL}">{BUSINESS_EMAIL}</a></div><div><span class="contact-label">Phone</span><a href="tel:+13213320682">(321) 332-0682</a></div><div><span class="contact-label">Mailing address</span><span>PO Box 680585<br>Orlando, FL 32868</span></div></address>'''
+
 def button(text='Let’s talk about your book', href='contact.html', secondary=False):
     return f'<a class="button {"secondary" if secondary else ""}" href="{href}">{text}<span aria-hidden="true">↗</span></a>'
 
@@ -35,6 +40,11 @@ home = home.removesuffix(cta) + home_extra + cta
 services = services.removesuffix(cta) + services_extra + cta
 about = about.removesuffix(cta) + about_extra + cta
 contact += contact_extra
+contact = contact.replace('<div class="contact-note">', contact_details() + '<div class="contact-note">', 1)
+contact = contact.replace('<form id="enquiry-form">', f'<form id="enquiry-form" data-recipient="{BUSINESS_EMAIL}">')
+contact = contact.replace('Create a project brief to save your enquiry. Nothing is sent automatically.', 'Opens your email app with your project details. Review and send your enquiry there.')
+contact = contact.replace('Save project brief', 'Prepare email enquiry')
+contact = contact.replace('<p id="form-status"', '<a id="prepared-email" class="text-link" hidden>Open prepared email ↗</a><p id="form-status"')
 home, services, about, contact = enhance(home, services, about, contact)
 
 for filename, title in nav:
@@ -42,6 +52,7 @@ for filename, title in nav:
     links = ''.join(f'<a href="{f}"'+(' aria-current="page"' if f==filename else '')+f'>{t}</a>' for f,t in nav)
     html = f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#050415"><title>{'Ink Worth LLC | Every story deserves to leave a mark' if title=='Home' else title+' | Ink Worth LLC'}</title><meta name="description" content="Ink Worth LLC — thoughtful writing, book design, and publishing support for authors and businesses."><link rel="icon" type="image/png" href="assets/brand/favicon.png"><link rel="stylesheet" href="assets/site.css"><script src="assets/site.js" defer></script></head><body><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="container header-inner"><a class="logo" href="index.html" aria-label="Ink Worth LLC home"><img src="assets/brand/logo-dark.png" alt="Ink Worth LLC" width="88" height="81"></a><button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">☰</span></button><nav id="main-nav" aria-label="Main navigation">{links}</nav><a class="button header-cta" href="contact.html">Let’s talk <span aria-hidden="true">↗</span></a></div></header><main id="main">{content}</main><footer><div class="container footer-top"><a href="index.html" aria-label="Ink Worth LLC home"><img src="assets/brand/logo-light.png" width="108" height="100" alt="Ink Worth LLC"></a><p>Thoughtful words.<br>Beautiful books. Lasting impressions.</p><nav aria-label="Footer navigation">{links}</nav></div><div class="container footer-bottom"><span>© {2026} Ink Worth LLC. All rights reserved.</span><span>Every story deserves to leave a mark.</span></div></footer></body></html>'''
+    html = html.replace('<div class="container footer-bottom">', '<div class="container">' + contact_details(footer=True) + '</div><div class="container footer-bottom">')
     html = html.replace('</head>', '<link rel="stylesheet" href="assets/details.css"><link rel="stylesheet" href="assets/photography.css"></head>')
     if title == 'Services':
         html = html.replace('</head>', '<link rel="stylesheet" href="assets/service-scroll.css"><script src="assets/service-scroll.js" defer></script></head>')

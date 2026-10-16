@@ -1,11 +1,12 @@
 from pathlib import Path
 import hashlib
 import re
-from page_content import home_extra, services_extra, about_extra, contact_extra, service_notes
+from page_content import home_extra, services_extra, about_extra, contact_extra, service_notes, privacy
 from visual_sections import enhance
 
 ROOT = Path(__file__).resolve().parent.parent
 nav = [('index.html', 'Home'), ('services.html', 'Services'), ('about.html', 'About'), ('contact.html', 'Contact')]
+pages = nav + [('privacy-policy.html', 'Privacy Policy')]
 
 BUSINESS_EMAIL = 'contact@inkworthllc.com'
 def contact_details(footer=False):
@@ -47,11 +48,24 @@ contact = contact.replace('Save project brief', 'Prepare email enquiry')
 contact = contact.replace('<p id="form-status"', '<a id="prepared-email" class="text-link" hidden>Open prepared email ↗</a><p id="form-status"')
 home, services, about, contact = enhance(home, services, about, contact)
 
-for filename, title in nav:
-    content = {'Home':home,'Services':services,'About':about,'Contact':contact}[title]
+page_content = {
+    'Home': home,
+    'Services': services,
+    'About': about,
+    'Contact': contact,
+    'Privacy Policy': privacy,
+}
+page_descriptions = {
+    'Privacy Policy': 'Privacy Policy for Ink Worth LLC — how we collect, use, protect, and disclose information when you visit our website or use our publishing services.',
+}
+
+for filename, title in pages:
+    content = page_content[title]
     links = ''.join(f'<a href="{f}"'+(' aria-current="page"' if f==filename else '')+f'>{t}</a>' for f,t in nav)
+    footer_links = links + f'<a href="privacy-policy.html"'+(' aria-current="page"' if filename=='privacy-policy.html' else '')+'>Privacy Policy</a>'
+    description = page_descriptions.get(title, 'Ink Worth LLC — thoughtful writing, book design, and publishing support for authors and businesses.')
     html = f'''<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#050415"><title>{'Ink Worth LLC | Every story deserves to leave a mark' if title=='Home' else title+' | Ink Worth LLC'}</title><meta name="description" content="Ink Worth LLC — thoughtful writing, book design, and publishing support for authors and businesses."><link rel="icon" type="image/png" href="assets/brand/favicon.png"><link rel="stylesheet" href="assets/site.css"><script src="assets/site.js" defer></script></head><body><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="container header-inner"><a class="logo" href="index.html" aria-label="Ink Worth LLC home"><img src="assets/brand/logo-dark.png" alt="Ink Worth LLC" width="88" height="81"></a><button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">☰</span></button><nav id="main-nav" aria-label="Main navigation">{links}</nav><a class="button header-cta" href="contact.html">Let’s talk <span aria-hidden="true">↗</span></a></div></header><main id="main">{content}</main><footer><div class="container footer-top"><a href="index.html" aria-label="Ink Worth LLC home"><img src="assets/brand/logo-light.png" width="108" height="100" alt="Ink Worth LLC"></a><p>Thoughtful words.<br>Beautiful books. Lasting impressions.</p><nav aria-label="Footer navigation">{links}</nav></div><div class="container footer-bottom"><span>© {2026} Ink Worth LLC. All rights reserved.</span><span>Every story deserves to leave a mark.</span></div></footer></body></html>'''
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#050415"><title>{'Ink Worth LLC | Every story deserves to leave a mark' if title=='Home' else title+' | Ink Worth LLC'}</title><meta name="description" content="{description}"><link rel="icon" type="image/png" href="assets/brand/favicon.png"><link rel="stylesheet" href="assets/site.css"><script src="assets/site.js" defer></script></head><body><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="container header-inner"><a class="logo" href="index.html" aria-label="Ink Worth LLC home"><img src="assets/brand/logo-dark.png" alt="Ink Worth LLC" width="88" height="81"></a><button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menu <span aria-hidden="true">☰</span></button><nav id="main-nav" aria-label="Main navigation">{links}</nav><a class="button header-cta" href="contact.html">Let’s talk <span aria-hidden="true">↗</span></a></div></header><main id="main">{content}</main><footer><div class="container footer-top"><a href="index.html" aria-label="Ink Worth LLC home"><img src="assets/brand/logo-light.png" width="108" height="100" alt="Ink Worth LLC"></a><p>Thoughtful words.<br>Beautiful books. Lasting impressions.</p><nav aria-label="Footer navigation">{footer_links}</nav></div><div class="container footer-bottom"><span>© {2026} Ink Worth LLC. All rights reserved.</span><span>Every story deserves to leave a mark.</span></div></footer></body></html>'''
     html = html.replace('<div class="container footer-bottom">', '<div class="container">' + contact_details(footer=True) + '</div><div class="container footer-bottom">')
     html = html.replace('</head>', '<link rel="stylesheet" href="assets/details.css"><link rel="stylesheet" href="assets/photography.css"></head>')
     if title == 'Services':
@@ -64,4 +78,4 @@ for filename, title in nav:
         return f'{match.group(1)}{path}?v={version}{match.group(3)}'
     html = re.sub(r'((?:href|src)=")(assets/[^"?]+\.(?:css|js))(")', version_asset, html)
     (ROOT/filename).write_text(html, encoding='utf-8')
-print('Built four Ink Worth business pages.')
+print('Built Ink Worth business pages, including Privacy Policy.')

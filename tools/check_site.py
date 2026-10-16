@@ -9,7 +9,7 @@ with sync_playwright() as p:
     page.on('pageerror', lambda error: errors.append(str(error)))
     for width in [1440, 390, 320]:
         page.set_viewport_size({'width':width,'height':900})
-        for name in ['index','services','about','contact']:
+        for name in ['index','services','about','contact','privacy-policy']:
             page.emulate_media(reduced_motion='reduce' if name=='services' else 'no-preference')
             response = page.goto(f'http://127.0.0.1:4173/{name}.html')
             assert response.status == 200
@@ -28,6 +28,9 @@ with sync_playwright() as p:
                 assert detail.get_attribute('open') is not None
                 assert detail.locator('.faq-answer').is_visible()
                 detail.locator('summary').click()
+            if name == 'privacy-policy':
+                assert page.get_by_role('heading', name='1. Introduction').is_visible()
+                assert page.locator('#disclaimer').is_visible()
             page.evaluate('window.scrollTo(0, 0)')
             page.wait_for_timeout(800)
             if width == 1440 and name == 'index':
@@ -66,6 +69,6 @@ with sync_playwright() as p:
     assert plain_page.locator('.faq-answer').first.is_visible()
     plain.close()
     assert not errors, errors
-    print('PASS: all four pages at 1440, 390, and 320px; image loading; mobile navigation; service preselection; prepared email recipient and content; no JavaScript errors.')
-    print('PASS: FAQs on every page, reduced motion, and content/FAQs without JavaScript.')
+    print('PASS: all pages (including Privacy Policy) at 1440, 390, and 320px; image loading; mobile navigation; service preselection; prepared email recipient and content; no JavaScript errors.')
+    print('PASS: FAQs on content pages, reduced motion, and content/FAQs without JavaScript.')
     browser.close()

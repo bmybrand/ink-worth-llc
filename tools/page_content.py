@@ -52,3 +52,168 @@ contact_extra = '''<section class="process section"><div class="container">'''+h
 ('What if I am unsure which service to choose?', 'Select “A little of everything / Not sure yet” and describe what you want to achieve. Your current materials and priorities will help determine the most useful starting point.'),
 ('What happens when I prepare an email enquiry?', 'The form opens your email app with your project details addressed to contact@inkworthllc.com. Review the message and send it from your email app. You can also email us directly or call (321) 332-0682.'),
 ('Can I include a deadline or budget?', 'Yes. Include these in your project description. They help frame a realistic scope; sending an enquiry does not confirm availability, pricing, or a delivery date.')], 'Before you reach out.')
+
+def policy_section(number, title, *blocks, prefix='section'):
+    body = ''.join(blocks)
+    return f'<article class="policy-section" id="{prefix}-{number}"><h2><span>{number}.</span> {title}</h2>{body}</article>'
+
+def policy_p(text):
+    return f'<p>{text}</p>'
+
+def policy_list(items):
+    return '<ul>' + ''.join(f'<li>{item}</li>' for item in items) + '</ul>'
+
+def policy_contact_block():
+    return '''<div class="policy-contact"><p><strong>Ink Worth LLC</strong></p><p>Email: <a href="mailto:contact@inkworthllc.com">contact@inkworthllc.com</a></p><p>Phone: <a href="tel:+13213320682">(321) 332-0682</a></p><p>Mailing Address: PO Box 680585, Orlando, FL 32868</p></div>'''
+
+privacy_policy = '''<section class="page-intro container"><span class="eyebrow">LEGAL</span><h1>Privacy Policy</h1><p>How Ink Worth LLC collects, uses, stores, protects, and discloses information when you visit our website or use our services.</p><p class="policy-meta">Effective Date: October 14, 2026</p></section><section class="container policy-doc" aria-label="Privacy Policy">''' + ''.join([
+policy_section('1', 'Introduction',
+    policy_p('Ink Worth LLC (“Ink Worth,” “we,” “our,” or “us”) is committed to respecting your privacy and protecting the personal information you share with us. This Privacy Policy explains how we collect, use, store, protect, and disclose information when you visit our website, contact our team, purchase our services, or communicate with us through telephone calls, SMS text messages, or email.'),
+    policy_p('Ink Worth LLC provides professional services related to book publishing, book writing, editing, proofreading, book cover design, and book marketing programs.'),
+    policy_p('By using our website or services, you acknowledge that you have had the opportunity to review this Privacy Policy. Where consent is required by law, we will request it separately.')),
+policy_section('2', 'Information We Collect',
+    policy_p('Depending on how you interact with us, we may collect the following categories of information:'),
+    policy_list([
+        '<strong>Personal and Contact Information:</strong> Your name, email address, telephone number, mailing address, business information, and other details you voluntarily provide.',
+        '<strong>Account and Transaction Information:</strong> Information relating to service inquiries, project proposals, contracts, invoices, payments, purchases, and customer support requests. Payment information may be processed by third-party payment providers.',
+        '<strong>Manuscripts and Project Materials:</strong> Book manuscripts, outlines, drafts, research materials, author biographies, photographs, cover concepts, marketing content, publishing preferences, and other materials you provide to us to complete your project.',
+        '<strong>Website and Technical Information:</strong> Information such as your IP address, browser type, device information, pages visited, referral sources, and website usage data. Cookies and similar technologies may be used where applicable.',
+        '<strong>Communication Information:</strong> Records of communications between you and Ink Worth LLC, including emails, text messages, customer service requests, and relevant project correspondence.'
+    ])),
+policy_section('3', 'How We Use Your Information',
+    policy_p('We may use the information we collect to:'),
+    policy_list([
+        'Provide and manage book publishing, book writing, editing, proofreading, book cover design, and book marketing services.',
+        'Review manuscripts, develop project plans, prepare proposals, and communicate about project progress.',
+        'Process transactions, maintain customer accounts, issue invoices, and provide customer support.',
+        'Send service-related messages, appointment reminders, project updates, and administrative notifications.',
+        'Send promotional emails or text messages where permitted by law and where any required consent has been obtained.',
+        'Improve our website, service quality, customer experience, and business operations.',
+        'Protect against fraud, unauthorized activity, misuse, and security threats.',
+        'Maintain business records and comply with applicable legal obligations.'
+    ]),
+    policy_p('We will not knowingly use your personal information for purposes materially different from those described here without providing any notice or obtaining any consent required by applicable law.')),
+policy_section('4', 'Manuscript Confidentiality and Intellectual Property',
+    policy_p('Ink Worth LLC recognizes that unpublished manuscripts, original writing, and creative materials may be highly confidential and valuable to their authors.'),
+    policy_p('We use manuscripts and other project materials for legitimate business purposes associated with the services requested by the customer, including writing, editing, proofreading, formatting, design, publishing coordination, and marketing.'),
+    policy_p('We do not sell customers’ unpublished manuscripts or intentionally disclose confidential project materials to the public for unrelated commercial purposes.'),
+    policy_p('Access to project materials may be provided to authorized employees, contractors, editors, designers, publishing partners, or other service providers when reasonably necessary to perform the requested services, subject to appropriate confidentiality obligations where applicable.'),
+    policy_p('Ink Worth LLC does not claim ownership of a customer’s manuscript merely because the customer submits it to us. Ownership, copyright, licensing rights, work-for-hire arrangements, and rights to deliverables will be governed by the applicable written service agreement and relevant law.'),
+    policy_p('Customers should review their individual service agreements for specific provisions regarding confidentiality, ownership, copyright transfers, licensing, and the use of completed work in portfolios or promotional materials.')),
+policy_section('5', 'Sharing and Disclosure of Information',
+    policy_p('Ink Worth LLC does not sell personal information in exchange for money. We may disclose information in the following circumstances:'),
+    policy_list([
+        '<strong>Service Providers:</strong> We may share necessary information with trusted vendors who support our operations, including website hosting providers, communication platforms, payment processors, cloud storage providers, editors, designers, publishing partners, and marketing service providers.',
+        '<strong>Customer Authorization:</strong> We may share information when you expressly authorize us to do so, including when you request assistance with publishing, distribution, advertising, or other third-party services.',
+        '<strong>Legal Requirements:</strong> We may disclose information when reasonably necessary to comply with applicable law, legal process, or a lawful request from an authorized government authority.',
+        '<strong>Business Protection:</strong> We may use or disclose information when reasonably necessary to investigate suspected fraud, enforce our agreements, protect our legal rights, or safeguard customers, employees, and the public.',
+        '<strong>Business Transactions:</strong> Information may be transferred as part of a merger, acquisition, restructuring, or sale of business assets, subject to applicable legal requirements.'
+    ]),
+    policy_p('We do not authorize service providers to use customer information for purposes unrelated to the services they perform on our behalf, except as otherwise permitted by law.')),
+policy_section('6', 'SMS and Email Communications',
+    policy_p('Ink Worth LLC may communicate with customers and prospective customers through SMS text messages and email.'),
+    policy_p('Service-related communications may include project updates, appointment confirmations, requests for information, billing notices, and customer support responses.'),
+    policy_p('Marketing communications may include information about our publishing services, writing and editing packages, book marketing programs, promotional offers, and other relevant services. We will send marketing communications only where permitted by applicable law and subject to any required consent.'),
+    policy_p('<strong>SMS consent:</strong> Where applicable, customers will be asked to provide the required consent before receiving marketing text messages. Consent to receive marketing messages is not a condition of purchasing our services.'),
+    policy_p('<strong>Message frequency and charges:</strong> Message frequency may vary. Message and data rates may apply depending on your mobile carrier and service plan.'),
+    policy_p('<strong>Opting out of text messages:</strong> You may opt out of SMS marketing messages at any time by replying STOP. Other supported opt-out instructions may also be provided in the message. We may send a final confirmation of your opt-out request where permitted.'),
+    policy_p('<strong>Email opt-out:</strong> You may unsubscribe from promotional emails using the unsubscribe link included in the message or by contacting us at <a href="mailto:contact@inkworthllc.com">contact@inkworthllc.com</a>. You may continue to receive essential transactional or service-related communications when necessary.'),
+    policy_p('<strong>Help:</strong> For assistance with text communications, reply HELP where supported or contact us using the details listed in the Contact Us section.'),
+    policy_p('<strong>Mobile information privacy:</strong> Mobile phone numbers and SMS consent information will not be sold or shared with third parties or affiliates for their own marketing or promotional purposes. Information may be shared with service providers that help us deliver messaging services, where necessary for those services, and with other parties when legally permitted or required.')),
+policy_section('7', 'Cookies and Website Technologies',
+    policy_p('Our website may use cookies, analytics tools, pixels, or similar technologies to support website functionality, understand visitor activity, improve performance, and measure marketing effectiveness.'),
+    policy_p('You may be able to manage cookies through your browser settings or any cookie preference tool available on our website. Disabling certain cookies may affect website functionality.'),
+    policy_p('Where required by law, we will obtain consent before using non-essential cookies or similar tracking technologies.')),
+policy_section('8', 'Data Security',
+    policy_p('Ink Worth LLC takes reasonable administrative, technical, and organizational measures designed to protect personal information and project materials against unauthorized access, misuse, loss, alteration, or disclosure.'),
+    policy_p('These measures may include access restrictions, secure accounts, confidentiality practices, and the use of reputable service providers.'),
+    policy_p('However, no electronic transmission, storage system, or online service can be guaranteed to be completely secure. We therefore cannot promise absolute security, although we will take reasonable steps to protect the information entrusted to us.')),
+policy_section('9', 'Data Retention',
+    policy_p('We retain personal information, customer records, and project materials for as long as reasonably necessary to provide our services, administer agreements, resolve disputes, maintain business records, comply with legal obligations, and protect our legitimate business interests.'),
+    policy_p('Retention periods may vary depending on the type of information, the nature of the project, contractual obligations, and applicable law.'),
+    policy_p('When information is no longer reasonably required, we will take appropriate steps to delete, destroy, or de-identify it, subject to applicable legal and operational requirements.')),
+policy_section('10', 'Your Privacy Rights',
+    policy_p('Depending on your location and applicable law, you may have the right to:'),
+    policy_list([
+        'Request access to certain personal information we hold about you.',
+        'Request correction of inaccurate personal information.',
+        'Request deletion of personal information, subject to applicable exceptions.',
+        'Withdraw consent where processing is based on consent.',
+        'Object to or request restrictions on certain processing activities.',
+        'Opt out of marketing communications.',
+        'Request information about certain categories of information we collect, use, or disclose.'
+    ]),
+    policy_p('To exercise an applicable privacy right, contact us at <a href="mailto:contact@inkworthllc.com">contact@inkworthllc.com</a>. We may need to verify your identity before processing a request.'),
+    policy_p('We will respond to valid requests in accordance with applicable legal requirements. Certain records may need to be retained for legal, contractual, accounting, security, or dispute-resolution purposes.')),
+policy_section('11', 'Third-Party Websites and Services',
+    policy_p('Our website or communications may contain links to third-party websites, publishing platforms, payment processors, advertising platforms, or other external services.'),
+    policy_p('These third parties may maintain their own privacy policies and terms of use. Ink Worth LLC does not control the privacy practices of independent third parties, and we encourage you to review their policies before submitting information to them.')),
+policy_section('12', "Children's Privacy",
+    policy_p('Our services are intended for adults and are not knowingly directed to children under 13. We do not knowingly collect personal information online from children under 13 without the parental consent or other authorization required by applicable law.'),
+    policy_p('If you believe a child has provided personal information to us inappropriately, please contact us so that we can review the matter and take appropriate action.')),
+policy_section('13', 'International Customers',
+    policy_p('If you access our website or services from outside the United States, your information may be processed or stored in the United States or other locations where we or our service providers operate.'),
+    policy_p('Where applicable law requires specific disclosures, safeguards, or additional rights for international data transfers, we will address those requirements as applicable to our business and the relevant customer relationship.')),
+policy_section('14', 'Pseudonym and Customer Communication Policy',
+    policy_p('Ink Worth LLC may allow employees, representatives, or customer service personnel to use professional display names or pseudonyms when communicating with customers.'),
+    policy_p('This practice may help provide consistent customer service, simplify communication, and maintain a uniform professional experience across teams and regions.'),
+    policy_p('A pseudonym is a professional name used for communication purposes and is not intended to misrepresent contractual obligations, conceal legally required business information, or mislead customers about material facts.'),
+    policy_p('Where legally required or reasonably necessary for a contract, billing matter, complaint, or formal business transaction, Ink Worth LLC will provide appropriate business or representative information.')),
+policy_section('15', 'Changes to This Privacy Policy',
+    policy_p('Ink Worth LLC may revise this Privacy Policy periodically to reflect changes in our services, information practices, technology, or legal obligations.'),
+    policy_p('The revised version will be posted on our website with an updated “Last Updated” date. Where required by law, we will provide additional notice or seek consent before implementing material changes.'),
+    policy_p('We encourage customers to review this policy periodically.')),
+policy_section('16', 'Contact Us',
+    policy_p('If you have questions, concerns, or requests relating to this Privacy Policy or our information-handling practices, please contact us:'),
+    policy_contact_block())
+]) + '</section>'
+
+disclaimer = '''<section class="container policy-doc policy-doc--disclaimer" id="disclaimer" aria-label="Disclaimer"><div class="policy-divider"><span class="eyebrow">DISCLAIMER</span><h2>Service Disclaimer</h2><p class="policy-meta">Effective Date: October 14, 2026</p></div>''' + ''.join([
+policy_section('1', 'General Disclaimer',
+    policy_p('Ink Worth LLC provides book publishing, book writing, editing, proofreading, book cover design, and book marketing services. Information provided on our website, in consultations, through email, or in other business communications is intended for general informational and service-related purposes.'),
+    policy_p('Although we make reasonable efforts to provide professional services, we do not guarantee that every service, recommendation, manuscript, design, marketing campaign, or publishing outcome will meet every customer’s expectations or produce a particular result.'),
+    prefix='disclaimer'),
+policy_section('2', 'Publishing and Distribution Disclaimer',
+    policy_p('Publishing and distribution opportunities may depend on third-party platforms, publishers, distributors, retailers, printers, and other organizations.'),
+    policy_p('Ink Worth LLC does not guarantee acceptance by any publisher, bookstore, literary agent, retailer, distribution platform, or other third party unless a specific written agreement expressly provides otherwise.'),
+    policy_p('Publishing timelines, availability, platform requirements, pricing, distribution coverage, and other third-party conditions may change without our control.'),
+    prefix='disclaimer'),
+policy_section('3', 'Book Marketing and Sales Disclaimer',
+    policy_p('Ink Worth LLC may offer book marketing programs, promotional services, advertising assistance, campaign planning, and related services.'),
+    policy_p('We do not guarantee a specific number of book sales, downloads, reviews, followers, readers, rankings, media placements, royalties, revenue, profits, or return on investment.'),
+    policy_p('Marketing results depend on multiple factors, including the book’s subject matter, audience demand, pricing, competition, author participation, advertising budgets, platform policies, and market conditions.'),
+    policy_p('Any estimates, projections, examples, testimonials, or historical results are illustrative or reflect the circumstances described and should not be interpreted as a promise of future performance.'),
+    prefix='disclaimer'),
+policy_section('4', 'Writing, Editing, and Proofreading Disclaimer',
+    policy_p('Writing, editing, and proofreading services are intended to improve the clarity, structure, presentation, readability, and overall quality of written materials within the scope of the agreed services.'),
+    policy_p('Although reasonable care will be taken, no editing or proofreading process can guarantee the complete elimination of all errors, inconsistencies, or inaccuracies.'),
+    policy_p('The customer remains responsible for reviewing and approving final manuscripts, factual statements, citations, permissions, and other content before publication.'),
+    prefix='disclaimer'),
+policy_section('5', 'Copyright and Content Responsibility',
+    policy_p('Customers are responsible for ensuring that materials they provide or request us to use do not unlawfully infringe the copyright, trademark, privacy, publicity, or other legal rights of third parties.'),
+    policy_p('Customers should obtain appropriate permissions for third-party text, images, photographs, illustrations, quotations, and other protected materials where required.'),
+    policy_p('Unless otherwise agreed in a written contract, providing materials to Ink Worth LLC does not automatically transfer ownership of those materials to Ink Worth LLC or transfer ownership of deliverables to the customer. Applicable ownership and licensing terms will be governed by the relevant agreement and law.'),
+    prefix='disclaimer'),
+policy_section('6', 'Third-Party Platforms and Services',
+    policy_p('Ink Worth LLC may coordinate with or refer customers to independent publishers, retailers, printers, advertising platforms, distributors, payment providers, and other third-party services.'),
+    policy_p('We are not responsible for independent third-party policies, decisions, platform outages, account suspensions, distribution changes, advertising approvals, or other matters outside our reasonable control, subject to applicable law and any express contractual obligations.'),
+    prefix='disclaimer'),
+policy_section('7', 'No Legal, Tax, or Financial Advice',
+    policy_p('Information provided by Ink Worth LLC is not a substitute for individualized legal, tax, accounting, or financial advice.'),
+    policy_p('Customers should consult an appropriately qualified professional regarding copyright ownership, publishing contracts, tax treatment of royalties, business arrangements, intellectual property disputes, and other matters requiring professional advice.'),
+    prefix='disclaimer'),
+policy_section('8', 'Limitation of Liability',
+    policy_p('To the maximum extent permitted by applicable law, Ink Worth LLC will not be liable for indirect, incidental, special, consequential, or punitive damages arising from the use of our website or services, including loss of anticipated profits, sales, or business opportunities.'),
+    policy_p('Nothing in this disclaimer excludes or limits liability that cannot legally be excluded or limited. Any additional limitation of liability, refund terms, warranties, or remedies will be governed by the applicable service agreement and relevant law.'),
+    prefix='disclaimer'),
+policy_section('9', 'Acceptance of Terms',
+    policy_p('Use of our website and services is subject to applicable service agreements, project terms, and other policies provided by Ink Worth LLC.'),
+    policy_p('If any provision of this disclaimer conflicts with a signed service agreement, the applicable agreement will govern to the extent provided by its terms and permitted by law.'),
+    prefix='disclaimer'),
+policy_section('10', 'Contact Information',
+    policy_p('For questions regarding this disclaimer or our services, contact:'),
+    policy_contact_block(),
+    prefix='disclaimer')
+]) + '</section>'
+
+privacy = privacy_policy + disclaimer
